@@ -1,0 +1,53 @@
+.numero{
+    width: 45px;
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    background-color: black;
+    color: #fff;
+}
+.btncolor{
+    background-color: rgb(19, 18, 18);
+}
+.btncolor1{
+    background-color: rgb(22, 67, 117);
+}
+.igual{
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+}
+.Pdisplay{
+    height: 40px;
+    width: 180px;
+    font-family:calculator;
+    src: url(/fuentes/calculator.ttf);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px;
+    background-color: rgb(36, 36, 36);
+    outline: none;
+    color: #fff;
+    border: none;
+}
+table{
+    margin: auto;
+    background-color: rgb(36, 36, 36);
+}
+td{
+    text-align: center;
+    border: none;
+    }
+p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-align: left;
+    padding: 5px;
+    margin: auto;
+    font-size: small;
+}
+
+
+
+

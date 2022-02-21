@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+
+    <script>
+        //cifra="" es para ir concatenando los números value=cifra + numero
+        var cifra="";
+        var acumulado=0;
+        var p_operacion=true;
+        var sumar=false;
+        var restar=false;
+        var multiplicar=false;
+        var dividie=false;
+
+        function displayNumeros(numero){
+            document.getElementById("display").value=cifra + numero;
+            cifra=document.getElementById("display").value;
+        }
+
+        function suma(){
+            //Acumulado = 0 presionamos un número es igual a 0+cifra(numero ej 5) ahora acumulado vale 5 se resetea cifra que ahora es vacio y apretamos el número 2 ahora acumulado es = 5 que tenía almacenado + 2 que vale cifra ahora enconces acumulado es igual a 7 
+            if(restar){
+                acumulado = acumulado - parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+            }else{
+            acumulado = acumulado + parseInt(cifra);
+            document.getElementById("display").value = acumulado;
+        }
+            cifra="";
+            sumar=true;
+            p_operacion=false;
+        
+    }
+        function resta(){
+            if(p_operacion==false){
+            if(sumar){
+                acumulado = acumulado + parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+            }else{
+                acumulado = acumulado - parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }
+            }else{
+                acumulado=parseInt(cifra);
+                p_operacion=false;
+            }
+            cifra="";
+            sumar=false;
+            restar=true;
+            p_operacion=false;
+        }
+        function multiplica(){
+            if(p_operacion==false){
+            if(sumar){
+                acumulado = acumulado + parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }else if(restar){
+                acumulado = acumulado - parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }else{
+                acumulado = acumulado * parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }
+            }else{
+                acumulado=parseInt(cifra);
+                p_operacion=false;
+            }
+            cifra="";
+            sumar=false;
+            restar=false;
+            multiplicar=true;
+            p_operacion=false;
+        }
+        function divide(){
+            if(p_operacion==false){
+            if(sumar){
+                acumulado = acumulado + parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                 }else if(restar){
+                 acumulado = acumulado - parseInt(cifra);
+                 document.getElementById("display").value = acumulado;
+                }else if(multiplicar){
+                acumulado = acumulado * parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }else{
+                acumulado = acumulado / parseInt(cifra);
+                document.getElementById("display").value = acumulado;
+                }
+            }else{
+                acumulado=parseInt(cifra);
+                p_operacion=false;
+            }
+           
+            cifra="";
+            sumar=false;
+            restar=false;
+            multiplicar=false;
+            p_operacion=false;
+            dividir=true;
+        }
+
+        function resultado(){
+            if(sumar){
+            document.getElementById("display").value = acumulado + parseInt(cifra);
+            }else if(restar){
+            document.getElementById("display").value = acumulado - parseInt(cifra);
+            }else if(multiplicar){
+            document.getElementById("display").value = acumulado * parseInt(cifra);
+            }else if(dividir){
+            document.getElementById("display").value = acumulado / parseInt(cifra);
+            }  
+
+        }      
+        
+    </script>
+
+</head>
+<body>
+    <table width="113px"  border="1">
+        <tr>
+            <td colspan="4" align="center">
+            <p>Calculadora</p>
+            <input name="display" type="text" class="Pdisplay" id="display" readonly></td>
+        </tr>
+        <tr>
+            <td><input name="num7" type="button" class="numero" id="num7" value="7" onclick="displayNumeros(7)"></td>
+            <td><input name="num8" type="button" class="numero" id="num8" value="8" onclick="displayNumeros(8)"></td>
+            <td><input name="num9" type="button" class="numero" id="num9" value="9" onclick="displayNumeros(9)"></td>
+            <td><input name="btn" type="button" class="numero btncolor" id="btn" value="÷" onclick="divide()"></td>
+        </tr>
+        <tr>
+            <td><input name="num4" type="button" class="numero" id="num4" value="4" onclick="displayNumeros(4)"></td>
+            <td><input name="num5" type="button" class="numero" id="num5" value="5" onclick="displayNumeros(5)"></td>
+            <td><input name="num6" type="button" class="numero" id="num6" value="6" onclick="displayNumeros(6)"></td>
+            <td><input name="btn2" type="button" class="numero btncolor" id="btn2" value="x" onclick="multiplica()"</td>
+        </tr>
+        <tr>
+            <td><input name="num1" type="button" class="numero" id="num1" value="1" onclick="displayNumeros(1)"></td>
+            <td><input name="num2" type="button" class="numero" id="num2" value="2" onclick="displayNumeros(2)"></td>
+            <td><input name="num3" type="button" class="numero" id="num3" value="3" onclick="displayNumeros(3)"></td>
+            <td><input name="btn3" type="button" class="numero btncolor" id="btn3" value="-" onclick="resta()"></td>
+        </tr>
+        <tr>
+            <td><input name="pto" type="button" class="numero" id="pto" value="."</td>
+            <td><input name="num0" type="button" class="numero" id="num0" value="0" onclick="displayNumeros(0)"></td>
+            <td><input name="btn4" type="button" class="numero btncolor1" id="btn4" value="=" onclick="resultado()"></td>
+            <td><input name="btn5" type="button" class="numero btncolor" id="btn5" value="+" onclick="suma()"></td>
+        </tr>
+    </table>
+    
+    <script>
+        document.getElementById("display").value=0;
+    </script>
+    
+
+</body>
+</html>
